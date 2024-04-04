@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            NoteManager. Instance.OnInput(KeyCode.A);
+            NoteManager.Instance.OnInput(KeyCode.A);
 
         }
         if (Input.GetKeyDown(KeyCode.S))
