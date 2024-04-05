@@ -20,7 +20,5 @@ public class UIManager : MonoBehaviour
     {
         scoreTmp.text = $"{currentScore}/{maxScore}";
         scoreImg.fillAmount = (float)currentScore / maxScore;
-
-
     }
 }

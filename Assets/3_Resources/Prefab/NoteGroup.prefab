@@ -477,9 +477,10 @@ MonoBehaviour:
   notePrefab: {fileID: 7819946335300301899, guid: 129f448ddacebbb43bdb562498b60742, type: 3}
   noteSpawn: {fileID: 8729863932942836157}
   noteGap: 7.5
-  btnSpriteRenderer: {fileID: 0}
+  btnSpriteRenderer: {fileID: 5262362666022693262}
   normalBtnSprite: {fileID: 21300000, guid: d7b61edc0b017174095824530172ad1f, type: 3}
   selectBtnSprite: {fileID: 21300000, guid: 4fce3950ae84d9c46a154454c898bf17, type: 3}
+  keyCodeTmp: {fileID: 8042164282627335018}
   anim: {fileID: 7554855585578441078}
 --- !u!111 &7554855585578441078
 Animation:

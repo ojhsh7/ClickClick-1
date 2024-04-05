@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class NoteGroup : MonoBehaviour
@@ -11,6 +12,7 @@ public class NoteGroup : MonoBehaviour
     [SerializeField] private SpriteRenderer btnSpriteRenderer;
     [SerializeField] private Sprite normalBtnSprite;
     [SerializeField] private Sprite selectBtnSprite;
+    [SerializeField] private TextMeshPro keyCodeTmp;
     [SerializeField] private Animation anim;
     private KeyCode keyCode;
 
@@ -26,10 +28,17 @@ public class NoteGroup : MonoBehaviour
 
     public void Create(KeyCode keyCode)
     {
-        for (int i = 0; i < noteList.Count; i++)
-            noteList[i].transform.localPosition = Vector3.up * i * noteGap;
+        this.keyCode = keyCode;
+        keyCodeTmp.text = keyCode.ToString();
+        
+        for (int i = 0; i < noteMaxNum; i++)
+        {
+            CreateNote(true);
+        }
+        InputManager.Instance.AddKeyCode(keyCode);
     }
-    private void CreatNote(bool isApple)
+
+    private void CreateNote(bool isApple)
     {
         GameObject noteGameObj = Instantiate(notePrefab);
         noteGameObj.transform.SetParent(noteSpawn.transform);
@@ -53,13 +62,13 @@ public class NoteGroup : MonoBehaviour
             delNote.DeleteNote();
             noteList.RemoveAt(0);
         }
-
+      
         //줄 내려오기
         for (int i = 0; i < noteList.Count; i++)
             noteList[i].transform.localPosition = Vector3.up * i * noteGap;
 
         //생성
-        CreatNote(isApple);
+        CreateNote(isApple);
 
         //노트 애니매이션
         anim.Play();

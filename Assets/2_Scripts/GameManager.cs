@@ -8,8 +8,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        UIManager.Instance.OnScoreChange(this.score, maxScore);
+
     }
+    private void Start()
+    {
+        UIManager.Instance.OnScoreChange(this.score, maxScore);
+        NoteManager.Instance.Create();
+    }
+
     public void CalculateScore(bool isApple)
     {
         if (isApple)
@@ -21,7 +27,7 @@ public class GameManager : MonoBehaviour
         {
             score--;
         }
-
         UIManager.Instance.OnScoreChange(this.score, maxScore);
     }
+
 }
