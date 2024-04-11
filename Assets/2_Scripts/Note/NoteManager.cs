@@ -7,9 +7,17 @@ public class NoteManager : MonoBehaviour
 
 {
     public static NoteManager Instance;
-    [SerializeField] private KeyCode[] initKeyCodeArr;
+   
     [SerializeField] private GameObject noteGroupPrefab;
     [SerializeField] private float noteGroupGap = 1f;
+    [SerializeField]
+    private KeyCode[] wholeKeyCodesArr = new KeyCode[]
+    {
+            KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.F,
+            KeyCode.G, KeyCode.H, KeyCode.J,KeyCode.K,KeyCode.L
+    };
+    [SerializeField] private int initNoteGroupNum = 2;
+   
     private List<NoteGroup>noteGroupList = new List<NoteGroup>();
     private void Awake()
     {
@@ -18,11 +26,19 @@ public class NoteManager : MonoBehaviour
 
     public void Create()
     {
-        foreach(KeyCode keyCode in initKeyCodeArr)
+        for (int i = 0; i < initNoteGroupNum; i++)
         {
-            CreateNoteGroup(keyCode);
+            CreateNoteGroup(wholeKeyCodesArr[i]);
         }
     }
+
+    public void CreateNoteGroup()
+    {
+        int noteGroupCount = noteGroupList.Count;
+        KeyCode keycode = this.wholeKeyCodesArr[noteGroupCount]; ;
+        CreateNoteGroup(keycode);
+    }
+        
 
     private void CreateNoteGroup(KeyCode keyCode)
     {
@@ -36,7 +52,7 @@ public class NoteManager : MonoBehaviour
     }
     public void OnInput(KeyCode keyCode)
     {
-        int randld = Random.Range(0,noteGroupList.Count);
+        int randld = Random.Range(0, noteGroupList.Count);
         bool isApple = randld == 0 ? true : false;
 
         foreach (NoteGroup noteGroup in noteGroupList)
@@ -44,6 +60,7 @@ public class NoteManager : MonoBehaviour
             if (keyCode == noteGroup.KeyCode)
             {
                 noteGroup.OnInput(isApple);
+                break;
             }
         }
 
