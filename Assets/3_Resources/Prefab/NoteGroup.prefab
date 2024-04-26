@@ -247,7 +247,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 10.130488, y: 3.3255563}
+  m_Size: {x: 10.13049, y: 3.3255563}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -491,9 +491,11 @@ Animation:
   m_GameObject: {fileID: 8530238044160944680}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 447e9bca257f1a549810a650a5a480a1, type: 2}
+  m_Animation: {fileID: 7400000, guid: b6ffe16f693eb0a478310f998a232cdb, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: 447e9bca257f1a549810a650a5a480a1, type: 2}
+  - {fileID: 7400000, guid: b6ffe16f693eb0a478310f998a232cdb, type: 2}
+  - {fileID: 7400000, guid: a4f58b50a48b5a9499b6904c5db737c3, type: 2}
+  - {fileID: 7400000, guid: b6ffe16f693eb0a478310f998a232cdb, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0

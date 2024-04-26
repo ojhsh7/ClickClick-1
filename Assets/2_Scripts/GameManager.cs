@@ -7,41 +7,39 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] private int maxScore;
     [SerializeField] private int noteGroupCreateScore = 10;
-    [SerializeField] private GameObject gameclearObj;
-    [SerializeField] private GameObject gameOverObj;
+    private bool isGameClear = false;
+    private bool isGameOver = false;
+
     private int score;
     private int nextNoteGroupUnlockCnt;
+
+
     [SerializeField] private float maxTime = 30f;
     public bool IsGameDone
     {
         get
         {
-            if (gameclearObj.activeSelf || gameOverObj.activeSelf)
+            if (isGameClear || isGameOver)
                 return true;
             else return false;
 
         }
-    } 
-    
+    }
+
 
 
     private void Awake()
     {
-  
-
         Instance = this;
-
     }
     private void Start()
     {
         UIManager.Instance.OnScoreChange(this.score, maxScore);
         NoteManager.Instance.Create();
 
-        gameclearObj.SetActive(false);
-        gameOverObj.SetActive(false);
         StartCoroutine(TimerCourout());
     }
-   
+
     IEnumerator TimerCourout()
     {
         float currentTime = 0f;
@@ -55,9 +53,9 @@ public class GameManager : MonoBehaviour
                 yield break;
             }
         }
-        Debug.Log(  "Game Over......" );
-
-        gameOverObj.SetActive(true);
+        Debug.Log("Game OVER");
+        isGameOver = true;
+        SceneManager.LoadScene("Game OVER");
     }
     public void CalculateScore(bool isApple)
     {
@@ -67,15 +65,16 @@ public class GameManager : MonoBehaviour
             score++;
             nextNoteGroupUnlockCnt++;
 
-            if(noteGroupCreateScore <= nextNoteGroupUnlockCnt)
+            if (noteGroupCreateScore <= nextNoteGroupUnlockCnt)
             {
                 nextNoteGroupUnlockCnt = 0;
                 NoteManager.Instance.CreateNoteGroup();
             }
-            if (maxScore < score) 
+            if (maxScore < score)
             {
                 Debug.Log("Game Clear!...... ");
-                gameclearObj.SetActive (true);
+                isGameClear = true;
+                SceneManager.LoadScene("Game OVER");
             }
         }
         else
@@ -87,6 +86,6 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         Debug.Log("Game Restart!...... ");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("PlayScence");
     }
 }

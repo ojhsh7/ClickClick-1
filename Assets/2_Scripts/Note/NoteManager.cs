@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 
@@ -66,7 +68,5 @@ public class NoteManager : MonoBehaviour
             }
         }
 
-       
-        
     }
 }
