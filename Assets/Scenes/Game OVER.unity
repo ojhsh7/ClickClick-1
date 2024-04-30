@@ -372,7 +372,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GameOVER
+  m_Text: Game OVER
 --- !u!222 &955070420
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -493,7 +493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29838be9ccd00974ea2faba1da58adf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverSceneName: GameOverScene
 --- !u!1 &1815258601
 GameObject:
   m_ObjectHideFlags: 0
