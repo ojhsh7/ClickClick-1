@@ -7,20 +7,43 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] private int maxScore;
     [SerializeField] private int noteGroupCreateScore = 10;
+
+    public static int score;
+    private int nextNoteGroupUnlockCnt;
     private bool isGameClear = false;
     private bool isGameOver = false;
 
-    private int score;
-    private int nextNoteGroupUnlockCnt;
-
 
     [SerializeField] private float maxTime = 30f;
+    [HideInInspector] public static float myTime;
+    [HideInInspector] public static float minTime;
+
+    public bool IsGameClear()
+    {
+        return isGameClear;
+    }
+    public bool IsGameOver()
+    {
+        return isGameOver;
+    }
+
     public bool IsGameDone
     {
         get
         {
             if (isGameClear || isGameOver)
+            {
+
+
+                float minTime = PlayerPrefs.GetFloat("minTime", 1000f);
+
+
+                if (minTime > myTime)
+                {
+                    myTime = minTime;
+                }
                 return true;
+            }
             else return false;
 
         }
@@ -31,10 +54,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        score = 0;
     }
+
     private void Start()
     {
-        UIManager.Instance.OnScoreChange(this.score, maxScore);
+        UIManager.Instance.OnScoreChange(score, maxScore);
         NoteManager.Instance.Create();
 
         StartCoroutine(TimerCourout());
@@ -86,6 +111,6 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         Debug.Log("Game Restart!...... ");
-        SceneManager.LoadScene("PlayScence");
+        SceneManager.LoadScene("Game Start");
     }
 }
