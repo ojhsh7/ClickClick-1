@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float maxTime = 30f;
     [HideInInspector] public static float myTime;
     [HideInInspector] public static float minTime;
+    
 
     public bool IsGameClear()
     {
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.OnScoreChange(score, maxScore);
         NoteManager.Instance.Create();
 
+        
         StartCoroutine(TimerCourout());
     }
 
@@ -87,6 +89,7 @@ public class GameManager : MonoBehaviour
         if (isApple)
 
         {
+            
             score++;
             nextNoteGroupUnlockCnt++;
 

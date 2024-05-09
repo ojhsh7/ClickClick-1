@@ -7,6 +7,8 @@ public class InputManager : MonoBehaviour
 
     private List<KeyCode> keyCodeList = new List<KeyCode>();
 
+ 
+
 
     private void Awake()
     {
@@ -21,6 +23,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+                
         if (GameManager.Instance.IsGameDone)
         {
             return;

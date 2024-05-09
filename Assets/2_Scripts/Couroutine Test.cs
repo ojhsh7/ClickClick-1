@@ -6,11 +6,9 @@ public class CouroutineTest : MonoBehaviour
 
     private void Start()
     {
-
-
         StartCoroutine(TimerCoroutine());
     }
-     IEnumerator TimerCoroutine()
+    IEnumerator TimerCoroutine()
     {
         int counter = 0;
         while (true)
@@ -19,11 +17,5 @@ public class CouroutineTest : MonoBehaviour
             counter++;
             yield return new WaitForSeconds(1);
         }
-
-
-
-
     }
-
-
 }
